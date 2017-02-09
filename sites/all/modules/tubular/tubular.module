@@ -1,0 +1,214 @@
+<?php
+
+/**
+ * @file
+ * Tubular is a jQuery plugin that lets you set a YouTube video as your page background
+ */
+
+/**
+ * Implements hook_init().
+ */
+function tubular_init() {
+  if (tubular_is_enabled()) {
+    //add css file
+    drupal_add_css(drupal_get_path('module', 'tubular') . '/tubular.css');
+    
+    //add js file
+    drupal_add_js(tubular_swfobject_js_path());
+    drupal_add_js(tubular_js_path());
+    drupal_add_js(array(
+      'tubular' => array(
+        'videoID' => variable_get('tubular_video_id', ''),
+        'wrapperID' => variable_get('tubular_wrapper_id', ''),
+      ),
+    ), 'setting');
+    drupal_add_js(drupal_get_path('module', 'tubular') . '/tubular.js');
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function tubular_menu() {
+  $items = array();
+  
+  $items['admin/config/user-interface/tubular'] = array(
+    'title' => 'Tubular',
+    'description' => 'Configuration for Tubular plugin',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tubular_admin_settings'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'tubular.admin.inc',
+  );
+  
+  return $items;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function tubular_theme() {
+  return array(
+    'tubular_buttons' => array(
+      'variables' => array('buttons' => NULL, 'position' => NULL),
+      'file' => 'tubular.pages.inc',
+    ),
+    'tubular_button' => array(
+      'variables' => array('button' => NULL),
+      'file' => 'tubular.pages.inc',
+    ),
+  );
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function tubular_page_alter(&$page) {
+  if (tubular_is_enabled() && tubular_buttons_position('absolute')) {
+    $page['page_bottom']['tubular'] = array(
+        '#type' => 'markup',
+        '#markup' => theme('tubular_buttons', array(
+          'buttons' => tubular_get_buttons(),
+          'position' => 'absolute',
+        )),
+    );
+  }
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function tubular_block_info() {
+  return array(
+    'tubular_button_block' => array(
+      'info' => t('Tubular buttons'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function tubular_block_view($delta = '') {
+  $block = array();
+  
+  switch ($delta) {
+    case 'tubular_button_block' :
+      if (tubular_is_enabled() && tubular_buttons_position('block')) {
+        $block['subject'] = '';
+        $block['content'] = theme('tubular_buttons', array(
+          'buttons' => tubular_get_buttons(),
+          'position' => 'block',
+        ));
+      }
+      break;
+  }
+  
+  return $block;
+}
+
+/**
+ * Determines if tubular is properly configured and enabled on the current path
+ *
+ * @return boolean
+ *  TRUE if tubular is enabled on the current path
+ */
+function tubular_is_enabled() {
+  return (drupal_match_path(current_path(), variable_get('tubular_pages'))
+    && variable_get('tubular_video_id', '') != ''
+    && variable_get('tubular_wrapper_id', '') != '');
+}
+
+/**
+ * Determines the position of the tubular_buttons_block
+ *
+ * @param $position
+ *  one of the available block positions : absolute, block
+ *  
+ * @return
+ *  TRUE if tubular_buttons block is set for this position
+ */
+function tubular_buttons_position($position) {
+  $positions = variable_get('tubular_buttons_positions', array());
+  
+  return isset($positions[$position]);
+}
+
+/**
+ * Set of control buttons for tubular
+ */
+function tubular_buttons() {
+  return array(
+    'pause' => array(
+      'title' => t('Play/Pause'),
+      'class' => 'videoPause',
+    ),
+    'stop' => array(
+      'title' => t('Stop'),
+      'class' => 'videoStop',
+    ),
+    'mute' => array(
+      'title' => t('Mute'),
+      'class' => 'videoMute',
+    ),
+  );
+}
+
+/**
+ * An #options ready array of control buttons
+ */
+function tubular_buttons_options() {
+  $options = array();
+  foreach (tubular_buttons() as $key => $button) {
+    $options[$key] = $button['title'];
+  }
+  return $options;
+}
+
+/**
+ * Returns active control buttons for tubular
+ */
+function tubular_get_buttons() {
+  $buttons = tubular_buttons();
+  $active_buttons = array();
+  
+  foreach (variable_get('tubular_buttons', array()) as $key) {
+    if (isset($buttons[$key])) {
+      $active_buttons[$key] = $buttons[$key];
+    }
+  }
+  
+  return $active_buttons;
+}
+
+/**
+ * Returns the path to the Tubular JavaScript file.
+ *
+ * @return mixed
+ *   The path to the JavaScript file or FALSE if no file could be found.
+ */
+function tubular_js_path() {
+  $path = libraries_get_path('tubular');
+
+  if (file_exists($path . '/js/jquery.tubular.js')) {
+    return $path . '/js/jquery.tubular.js';
+  }
+
+  return FALSE;
+}
+
+/**
+ * Returns the path to the swfobject JavaScript file.
+ *
+ * @return mixed
+ *   The path to the JavaScript file or FALSE if no file could be found.
+ */
+function tubular_swfobject_js_path() {
+  $path = libraries_get_path('swfobject');
+
+  if (file_exists($path . '/swfobject.js')) {
+    return $path . '/swfobject.js';
+  }
+
+  return FALSE;
+}

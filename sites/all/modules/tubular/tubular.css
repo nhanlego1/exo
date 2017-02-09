@@ -1,0 +1,30 @@
+/**
+ * @file
+ * Some custom css for Tubular module
+ */
+
+.tubular-position-absolute {
+  z-index:99;
+  position:absolute;
+  top:100px;
+  overflow:hidden;
+  margin:0;
+  padding:0;
+  width:auto;
+  margin-left:-60px;
+  left:50%;
+}
+
+.tubular-position-absolute li {
+  float:left;
+  margin:0 10px 0 0;
+  list-style:none outside none;
+}
+
+.tubular-position-absolute li:last-child {
+  margin:0;
+}
+
+.tubular-position-absolute li a {
+  color:#FFFFFF;
+}

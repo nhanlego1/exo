@@ -1,0 +1,29 @@
+<?php
+/**
+ * @file
+ * Installation and uninstallation functions.
+ */
+
+/**
+ * Implements hook_requirements().
+ */
+function tubular_requirements($phase) {
+  module_load_include('module', 'libraries');
+  module_load_include('module', 'tubular', 'tubular');
+  
+  $requirements['tubular_js'] = array(
+   'title' => t('tubular JavaScript file'),
+   'value' => tubular_js_path() ? t('Available') : t('Unavailable'),
+   'description' => !tubular_js_path() ? t('The Tubular module needs the Tubular plugin libary to work. Download it !here and place it in sites/all/libraries/tubular.', array('!here' => l(t('here'), 'http://code.google.com/p/jquery-tubular/downloads/list'))) : NULL,
+   'severity' => tubular_js_path() ? REQUIREMENT_OK : REQUIREMENT_ERROR,
+  );
+  
+  $requirements['tubular_swfobject_js'] = array(
+   'title' => t('swfObject file'),
+   'value' => tubular_swfobject_js_path() ? t('Available') : t('Unavailable'),
+   'description' => !tubular_swfobject_js_path() ? t('The Tubular module needs the swfobject plugin libary to work. Download it !here and place it in sites/all/libraries/swfobject.', array('!here' => l(t('here'), 'http://code.google.com/p/swfobject/downloads/list'))) : NULL,
+   'severity' => tubular_swfobject_js_path() ? REQUIREMENT_OK : REQUIREMENT_ERROR,
+  );
+  
+  return $requirements;
+}

@@ -1,0 +1,54 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: HAUTRUONG
+ * Date: 11/27/2016
+ * Time: 10:54 AM
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function tch_exo_theme($existing, $type, $theme, $path) {
+    $items = array();
+    $items['block_banner_video'] = array(
+        'render element' => 'element',
+        'path' => drupal_get_path('module', 'tch_exo') . '/theme',
+        'template' => 'block_banner_video',
+    );
+    return $items;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function tch_exo_block_info() {
+    $blocks = array();
+    $blocks['block_banner_video'] = array('info' => t('Block Banner Video'));
+    return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function tch_exo_block_view($delta = '') {
+    switch ($delta) {
+        case 'block_banner_video':
+
+            return array(
+                'subject' => t('Block Banner Video'),
+                'content' => theme('block_banner_video'),
+            );
+    }
+}
+
+/**
+ * Implements hook_init().
+ */
+function tch_exo_init() {
+    if(drupal_is_front_page()) {
+//        drupal_add_js(drupal_get_path('module', 'tch_exo') . '/assets/tubular/js/jquery.tubular.1.0.js');
+//        drupal_add_js(drupal_get_path('module', 'tch_exo') . '/assets/tubular/js/index.js');
+//        drupal_add_css(drupal_get_path('module', 'tch_exo') . '/assets/tubular/css/screen.css');
+    }
+}

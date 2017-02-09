@@ -1,0 +1,321 @@
+.front .body-innerwrapper, .front .body-innerwrapper>.body, .front #section-banner, .front #section-banner .sh-container, .front #section-banner .sh-container>.row, .front #section-banner .region, .front #section-banner .region>.block, .front #section-banner .block-contents, .front #section-banner .block-contents>.content {
+    height: 100%;
+    display: block;
+}
+
+/*banner*/
+#section-banner {
+	padding: 0 !important
+}
+
+#section-banner>.container, #section-banner>.sh-container {
+	width: 100% !important;
+	max-width: 100% !important;
+	margin: 0 !important;
+	padding: 0 !important
+}
+
+#section-banner>.container>.row, #section-banner>.sh-container>.row {
+	width: 100% !important;
+	margin: 0 !important
+}
+
+#section-banner .region>.block {
+	margin: 0
+}
+
+#section-banner .content.sh-block-content {
+	position: relative
+}
+
+.full-screen-video .block-contents .content {
+	height: 100%
+}
+
+.front .banner-description-center {
+	display: none
+}
+
+.banner-description-center {
+	font-family: "montserratlight"
+}
+
+.banner-description-center.loaded {
+	display: block
+}
+
+.banner-description-center p {
+	margin: 0
+}
+
+.banner-description-center .banner-intro {
+	text-transform: uppercase;
+	float: left;
+	width: 100%;
+	padding: 0 15px;
+	position: absolute;
+	z-index: 10;
+	left: 0;
+	top: 50%;
+	-webkit-transform: translate(0, -50%);
+	-moz-transform: translate(0, -50%);
+	-ms-transform: translate(0, -50%);
+	-o-transform: translate(0, -50%);
+	transform: translate(0, -50%);
+	text-align: center;
+	color: #fff
+}
+
+.banner-description-center .banner-intro h1, .banner-description-center .banner-intro h2,
+	.banner-description-center .banner-intro h3, .banner-description-center .banner-intro h4,
+	.banner-description-center .banner-intro h5 {
+	color: #fff;
+	margin: 0 0 10px;
+	font-size: 22px
+}
+
+.banner-description-center .banner-intro p {
+	font-size: 15px
+}
+
+.banner-description-center .anchor-body {
+	float: left;
+	position: absolute;
+	left: 0;
+	bottom: 35px;
+	text-align: center;
+	width: 100%;
+	z-index: 11
+}
+
+@media only screen and (min-width: 768px) {
+	.banner-description-center {
+		font-family: "montserrathairline"
+	}
+	.banner-description-center .banner-intro h1, .banner-description-center .banner-intro h2,
+		.banner-description-center .banner-intro h3,
+		.banner-description-center .banner-intro h4,
+		.banner-description-center .banner-intro h5 {
+		font-size: 30px;
+		margin: 0 0 20px
+	}
+	.banner-description-center .banner-intro p {
+		font-size: 20px
+	}
+    
+}
+@media only screen and (max-width: 1024px) {
+
+#section-header .superhero-dropdown > ul > li > a img, #section-header .socialTops a img, #section-header .site-logo a img {
+    max-width: 20%!important;  
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+	.banner-description-center .banner-intro h1, .banner-description-center .banner-intro h2,
+		.banner-description-center .banner-intro h3,
+		.banner-description-center .banner-intro h4,
+		.banner-description-center .banner-intro h5 {
+		font-size: 46px
+	}
+	.banner-description-center .banner-intro p {
+		font-size: 30px
+	}
+}
+
+/*brand*/
+.home-brands {
+    margin: 0
+}
+
+.home-brands .brand-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: block
+}
+
+.home-brands .brand-list li {
+    display: inline-block;
+    margin: 0 -4px 15px 0;
+    padding: 0 15px;
+    width: 50%;
+    vertical-align: middle;
+    text-align: center
+}
+
+.home-brands .brand-list li img {
+    width: 100%;
+    height: auto
+}
+
+@media only screen and (min-width: 480px) {
+    .home-brands .brand-list li {
+        width: 33.33333%
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .home-brands .brand-list li {
+        width: 33.33333%;
+        margin-bottom: 20px
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .home-brands .brand-list li {
+        width: 25%;
+        margin-bottom: 25px
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .home-brands .brand-list li {
+        width: 20%;
+        margin-bottom: 30px;
+        padding: 10px 15px
+    }
+}
+.home-brands .brand-list li img, img.grayscale {
+    /* filter:
+            url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0'/></filter></svg>#grayscale"); */
+    /*filter: gray;*/
+    /* -webkit-filter: grayscale(100%); */
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.home-brands .brand-list li img:hover, .home-brands .brand-list li img.disabled,
+img.grayscale:hover, img.grayscale.disabled {
+    filter: none;
+    -webkit-filter: grayscale(0%);
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease
+}
+
+
+.amazing-team {
+    margin: 0
+}
+
+.amazing-team .block-title {
+    margin: 10px 0 40px
+}
+
+.amazing-team h5 {
+    margin: 0 0 18px;
+    font-size: 15px;
+    font-weight: normal;
+    font-family: "MontserratRegular"
+}
+
+.amazing-team h5 span {
+    font-family: "montserratlight";
+    padding: 0 0 0 10px
+}
+
+.amazing-team .team-img {
+    display: inline-block;
+    float: none;
+    width: 232px;
+    height: 232px;
+    margin: 0 0 30px 0;
+    overflow: hidden;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%
+}
+
+.amazing-team .team-img img {
+    display: block;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%
+}
+
+.amazing-team .team-hover {
+    display: block;
+    padding: 0 15px
+}
+
+.amazing-team .team-hover strong {
+    font-size: 18px;
+    line-height: 1;
+    padding: 0 4px
+}
+
+.amazing-team .member {
+    text-align: center;
+    margin: 0 -4px 60px 0;
+    float: none;
+    display: inline-block;
+    vertical-align: top
+}
+
+@media only screen and (max-width: 767px) {
+    .amazing-team .member:last-child {
+        margin-bottom: 50px
+    }
+    #section-header .superhero-dropdown > ul > li > a img, #section-header .socialTops a img, #section-header .site-logo a img {
+    max-width: 20%!important;  
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+    .amazing-team .block-title {
+        margin: 50px 0 70px
+    }
+    .amazing-team .team-img img {
+        filter:
+                url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0'/></filter></svg>#grayscale");
+        filter: gray;
+        -webkit-filter: grayscale(100%)
+    }
+    .amazing-team .team-hover {
+        display: block;
+        filter: alpha(opacity = 0);
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        -moz-opacity: 0;
+        -khtml-opacity: 0;
+        opacity: 0;
+        -webkit-transition: all 0.3s linear;
+        -moz-transition: all 0.3s linear;
+        -ms-transition: all 0.3s linear;
+        -o-transition: all 0.3s linear;
+        transition: all 0.3s linear;
+        float: left;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 100%
+    }
+    .amazing-team .member {
+        margin: 0 -4px 120px 0
+    }
+    .amazing-team .member:hover .team-img img, .amazing-team .member:focus .team-img img
+    {
+        filter: none;
+        -webkit-filter: grayscale(0%)
+    }
+    .amazing-team .member:hover .team-hover, .amazing-team .member:focus .team-hover
+    {
+        display: block;
+        filter: alpha(opacity = 100);
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        -moz-opacity: 1;
+        -khtml-opacity: 1;
+        opacity: 1
+    }
+}
+
